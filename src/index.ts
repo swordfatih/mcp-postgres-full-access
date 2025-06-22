@@ -179,7 +179,7 @@ app.post("/mcp", async (req, res) => {
 
     let transport: StreamableHTTPServerTransport;
 
-    const isInitRequest = req.body?.method === "initialize" && typeof req.body?.params?.schema?.name === "string" && typeof req.body?.params?.schema?.version === "string";
+    const isInitRequest = req.body?.method === "initialize" && typeof req.body?.params === "object" && typeof req.body?.params?.protocolVersion === "string";
     console.log("🔍 isInitializeRequest manual check:", isInitRequest);
 
     if (sessionId && transports[sessionId]) {
